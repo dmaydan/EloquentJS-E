@@ -1,0 +1,49 @@
+<html>
+	<script>
+		var arrayToList = function(arr) {
+			var recursive_insert = function(list, element) {
+				if (!(list.value)) {
+					list.value = element;
+					list.rest = {};
+				}
+				else {
+					recursive_insert(list.rest, element);
+				}
+			};
+			var list = {};
+			for (let element of arr) {
+				recursive_insert(list, element);
+			}
+			return list;
+		};
+		var listToArray = function(list) {
+			if (!(Object.keys(list).includes("value"))) {
+				return [];
+			}
+			else if (list.rest == {}) {
+				return [list.value];
+			}
+			else {
+				return [list.value].concat(listToArray(list.rest));
+			}
+		}
+		var prepend = function(list, element) {
+			var newList = {
+				value: element,
+				rest: list
+			}
+			return newList;
+		}
+		var nth = function(list, destIndex, currentIndex) {
+			if (currentIndex == destIndex) {
+				return list.value;
+			}
+			else if (list.rest == {}) {
+				return undefined;
+			}
+			else {
+				return nth(list.rest, destIndex, currentIndex + 1);
+			}
+		}
+	</script>
+</html>

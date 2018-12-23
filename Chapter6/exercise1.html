@@ -1,0 +1,40 @@
+<html>
+	<script>
+		// Class implementation - modern JS
+		class Vector {
+			constructor(x, y) {
+				this.x = x;
+				this.y = y;
+			}
+			plus(vector) {
+				return (new Vector(this.x + vector.x, this.y + vector.y));
+			}
+			minus(vector) {
+				return (new Vector(this.x - vector.x, this.y - vector.y));
+			}
+			get length() {
+				return Math.sqrt(Math.pow(this.x, 2) + Math.pow(this.y, 2));
+			}
+		}
+		// Explicit implementation - older JS
+		var explicitVector = function(x, y) {
+			this.x = x;
+			this.y = y;
+		};
+		explicitVector.prototype = {
+			plus(vector) {
+				return (new explicitVector(this.x + vector.x, this.y + vector.y));
+			},
+			minus(vector) {
+				return (new explicitVector(this.x - vector.x, this.y + vector.y));
+			},
+			get length() {
+				return Math.sqrt(Math.pow(this.x, 2) + Math.pow(this.y, 2));
+			}
+		}
+		var myVector = new explicitVector(5, 5);
+		console.log(myVector.x);
+		console.log(myVector.y);
+		console.log(myVector.length);
+	</script>
+</html>

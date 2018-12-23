@@ -1,0 +1,10 @@
+<html>
+	<script>
+		var for_loop = function(value, test, update, body) {
+			for (value; test(value); value = update(value)) {
+				body(value);
+			}
+		}
+		for_loop(0, (x) => x < 10, (x) => x + 1, (x) => {console.log(x);});
+	</script>
+</html>

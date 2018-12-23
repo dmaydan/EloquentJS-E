@@ -1,0 +1,50 @@
+<html>
+	<script>
+		var deepEqual = function(operand1, operand2) {
+			// Prelim set up
+			var operand1Type = typeof operand1;
+			var operand2Type = typeof operand2;
+			if (operand1 === null) {
+				operand1Type = "null";
+			}
+			if (operand2 === null) {
+				operand2Type = "null";
+			}
+			// Cases
+			if (operand1Type != operand2Type) {
+				return false;
+			}
+			else if (operand1Type != "object") {
+				return (operand1 == operand2);
+			}
+			else {
+				let operand1Keys = Object.keys(operand1);
+				let operand2Keys = Object.keys(operand2);
+				if (operand1Keys.length != operand2Keys.length) {
+					return false;
+				}
+				else {
+					// Make sure that that all the properties in both
+					for (let property of operand1Keys) {
+						if (!(operand2Keys.includes(property))) {
+							return false;
+						}
+					}
+					for (let property of operand2Keys) {
+						if (!(operand1Keys.includes(property))) {
+							return false;
+						}
+					}
+					// Check that the properties have the same 'value'
+					for (let property of operand1Keys) {
+						if (!(deepEqual(operand1[property], operand2[property]))) {
+							return false;
+						}
+					}
+					return true;
+				}
+			}
+		}
+		console.log(deepEqual({x:{z:2},y:4}, {x:{z:2}, y:4}));
+	</script>
+</html>

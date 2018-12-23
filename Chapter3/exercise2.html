@@ -1,0 +1,21 @@
+<html>
+	<script>
+		var recursiveIsEven = function(num) {
+			if (num < 0) {
+				num *= -1;
+			}
+			if (num == 0) {
+				return "Even";
+			}
+			else if (num == 1) {
+				return "Odd";
+			}
+			else {
+				return recursiveIsEven(num - 2);
+			}
+		};
+		console.log(recursiveIsEven(50));
+		console.log(recursiveIsEven(75));
+		console.log(recursiveIsEven(-1));
+	</script>
+</html>
