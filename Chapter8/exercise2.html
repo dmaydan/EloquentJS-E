@@ -1,0 +1,33 @@
+<html>
+	<script>
+		const box = {
+			locked: true,
+			unlock() { this.locked = false; },
+			lock() { this.locked = true; },
+			_content: [],
+			get content() {
+				if (this.locked) throw new Error("Locked!");
+				return this._content;
+			}
+		};
+		var withBoxUnlocked = function(operation) {
+			var originalBoxState = box.locked;
+			if (box.locked) {
+				box.unlock();
+			}
+			try {
+				operation();
+			}
+			finally {
+				if (originalBoxState) {
+					box.lock();
+				}
+				console.log(box);
+			}
+		};
+		var operation = function() {
+			console.log(5/0);
+		};
+		withBoxUnlocked(operation);
+	</script>
+</html>

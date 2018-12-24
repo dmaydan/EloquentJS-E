@@ -1,0 +1,35 @@
+<html>
+	<script>
+		class Group {
+			constructor(){
+				this.contents = [];
+			}
+			add(value) {
+				if (!(this.contents.includes(value))) {
+					this.contents.push(value);
+				}
+			}
+			delete(value) {
+				var valueIndex = this.contents.indexOf(value);
+				if (valueIndex != -1) {
+					this.contents[valueIndex] = value;
+				}
+			}
+			has(value) {
+				return this.contents.includes(value);
+			}
+			static from(iterable) {
+				var fromGroup = new Group();
+				for (let element of iterable) {
+					fromGroup.add(element);
+				}
+				return fromGroup;
+			}
+		}
+		var myList = [1, 2, 3, 4, 5];
+		var someGroup = Group.from(myList);
+		console.log(someGroup.contents);
+
+
+	</script>
+</html>

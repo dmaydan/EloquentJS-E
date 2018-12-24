@@ -1,0 +1,56 @@
+<html>
+	<script>
+		class Group {
+			constructor(){
+				this.contents = [];
+			}
+			add(value) {
+				if (!(this.contents.includes(value))) {
+					this.contents.push(value);
+				}
+			}
+			delete(value) {
+				var valueIndex = this.contents.indexOf(value);
+				if (valueIndex != -1) {
+					this.contents[valueIndex] = value;
+				}
+			}
+			has(value) {
+				return this.contents.includes(value);
+			}
+			static from(iterable) {
+				var fromGroup = new Group();
+				for (let element of iterable) {
+					fromGroup.add(element);
+				}
+				return fromGroup;
+			}
+		}
+		class GroupIterator {
+			constructor(group){
+				this.currentIndex = 0;
+				this.group = group;
+			}
+			next() {
+				if (this.currentIndex == this.group.contents.length){
+					return {done: true};
+				}
+				let value = {
+					value: this.group.contents[this.currentIndex]
+				}
+				this.currentIndex += 1;
+				return {value, done: false}
+			}
+		}
+		Group.prototype[Symbol.iterator] = function() {
+			return new GroupIterator(this);
+		};
+		var myList = [1, 2, 3, 4, 5];
+		var someGroup = Group.from(myList);
+		for (let {value} of someGroup) {
+			console.log(value);
+		}
+
+
+	</script>
+</html>
