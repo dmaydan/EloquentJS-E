@@ -131,6 +131,127 @@ TABLE OF CONTENTS:
     International characters
     Summary
     Exercises
+10. MODULES
+    Modules
+    Packages
+    Improvised modules
+    Evaluating data as code
+    CommonJS
+    ECMAScript modules
+    Building and bundling
+    Module design
+    Summary
+    Exercises
+11. ASYNCRHONOUS PROGRAMMING
+    Asynchronicity
+    Crow tech
+    Callbacks
+    Promises
+    Failure
+    Networks are hard
+    Colletions of promises
+    Network flooding
+    Message routing 
+    Async functions
+    Generators
+    The event loop 
+    Asynchronous bugs
+    Summary
+    Exercises
+12. PROJECT: A PROGRAMMING LANGUAGE
+    Parsing
+    The evaluator
+    Special forms
+    The environment
+    Functions
+    Compilation
+    Cheating
+    Exercises
+13. JAVASCRIPT AND THE BROWSER
+Netowrks and the Internet
+The Web
+HTML
+HTML and JavaScript
+In the sandbox
+Compatability and the browser wars
+14. THE DOCUMENT OBJECT MODEL
+Document structure
+Trees
+The standard
+Moving through the tree
+Finding elements
+Changing the document
+Creating nodes
+Attributes
+Layout
+Styling
+Cascading styles
+Query selectors
+Positioning and animating
+Summary
+Exercises
+15. HANDLING EVENTS
+Event handlers
+Events and DOM nodes
+Event objects
+Propogation
+Defeault actions
+Key events
+Pointer events
+Scroll events
+Focus events
+Load event
+Events and the event loop
+Timers
+Debouncing
+Summary
+Exercises
+16. PROJECT: A PLATFORM GAME
+The game
+The technology
+Levels
+Reading a level
+Actors
+Encapsulation as a burden
+Drawing
+Motion and collision
+Actor updates
+Tracking keys
+Running the game
+Exercises
+17. DRAWING ON CANVAS:
+SVG
+The canvas element
+Lines and surfaces
+Paths
+Curves
+Drawing a pie chart
+Text
+Images
+Transformation
+Storing and clearing transformations
+Back to the game
+hoosing a graphics interface
+Summary
+Exercises
+18. HTTP AND FORMS
+The protocal
+Browsers and HTTP
+Fetch
+HTTP sandboxing
+Appreciating HTTPS
+Security and HTTPS
+Form fields
+Focus
+Disabled fields
+The form as a whole
+Text fields
+Checkboxes and radio buttons
+Select fields
+File fields
+Storing data client-side
+Summary
+Exercises
 ```
 
 https://www.amazon.com/Eloquent-JavaScript-3rd-Introduction-Programming/dp/1593279507/ref=sr_1_7?ie=UTF8&qid=1545603739&sr=8-7&keywords=javascript
