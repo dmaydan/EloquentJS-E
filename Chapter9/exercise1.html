@@ -1,0 +1,32 @@
+<html>
+	<script>
+		// car and cat
+		var reg1 = /ca[rt]/g;
+		loop_matches(reg1, "concatenate carpool");
+		// pop and prop
+		var reg2 = /pr?op/g;
+		loop_matches(reg2, "I popped a bubble and propogated disease");
+		// ferret, ferry, and ferrari
+		var reg3 = /\bferr(et|y|ari)\b/g;
+		loop_matches(reg3, "I bought a ferret and ferrari at the ferry");
+		// words ending in ious
+		var reg4 = /\b\w+ious\b/g;
+		loop_matches(reg4, "Egregious, disastrious, and studious all end with ious");
+		// whitespace character followed by period/comma/colon/semicolon
+		var reg5 = /\s[\.,:;]/g;
+		loop_matches(reg5, " ., , :, ;, and hello.");
+		// word longer than six letters
+		var reg6 =/\b\w{7,}\b/g;
+		loop_matches(reg6, "Hello, I am flamboyant, studious, and a turkey");
+		// word without letter e/E
+		var reg7 = /\b[^e\W\d]+\b/gi;
+		loop_matches(reg7, "Hello, there child");
+		// loop through all regex matches against string
+		function loop_matches(regex, string) {
+			let match;
+			while (match = regex.exec(string)) {
+				console.log(match[0]);
+			}
+		};
+	</script>
+</html>

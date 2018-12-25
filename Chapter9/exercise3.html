@@ -1,0 +1,12 @@
+<html>
+	<script>
+		var regex = /[\+\- ](\d+\.|\.\d+|\d+\.\d+)|(\d+[eE]-?\d+)/g;
+		loop_matches(regex, "43. .65 62.1 5e-3 14E10");
+		function loop_matches(regex, string) {
+			let match;
+			while (match = regex.exec(string)) {
+				console.log(match[0]);
+			}
+		};
+	</script>
+</html>
