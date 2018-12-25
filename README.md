@@ -1,7 +1,11 @@
 # EloquentJS Exercises
-This repository contains my solutions to the exercises in the EloquentJS javascript textbook.
+This repository contains my solutions to the exercises in the EloquentJS textbook.
 
 ```
+Eloquent Javascript: A Modern Introduction to Programming, 3rd edition by Marijn Haverbeke
+
+TABLE OF CONTENTS:
+
 1. VALUES, TYPES, AND OPERATORS
 Values
 Numbers
