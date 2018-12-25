@@ -1,5 +1,5 @@
 # EloquentJS Exercises
-This repository contains my solutions to the exercises in the EloquentJS textbook.
+This repository contains my solutions to the exercises in the EloquentJS textbook. Here's a listing of the topics covered in the textbook.
 
 ```
 Eloquent Javascript: A Modern Introduction to Programming, 3rd edition by Marijn Haverbeke
