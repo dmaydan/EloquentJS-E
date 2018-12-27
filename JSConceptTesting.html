@@ -1,6 +1,7 @@
 <html>
 	<script>
-		let number = /abc/y;
-		console.log(number.test("x abc"));
+		var promise = new Promise((resolve, reject) => {resolve("Hello");})
+		promise.then((resolvedVal) => {console.log(resolvedVal)});
+		console.log("Me first!");
 	</script>
 </html>

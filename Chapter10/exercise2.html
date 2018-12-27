@@ -1,0 +1,42 @@
+<html>
+	<script>
+		var promise_1 = new Promise((resolve, reject) => {resolve("This is promise 1.");});
+		var promise_2 = new Promise((resolve, reject) => {resolve("This is promise 2.");});
+		var promise_3 = new Promise((resolve, reject) => {resolve("This is promise 3.");});
+		var promise_4 = new Promise((resolve, reject) => {reject("This is promise 4.");});
+		var promise_array = [promise_1, promise_2, promise_3, promise_4];
+		
+		function promise_all(promise_array) {
+			return new Promise((resolve, reject) => 
+			{
+				var intermediate_promise = new Promise((resolve, reject) => {
+					let resolved_array = [];
+					let rejected_array = [];
+					for (let promise of promise_array){
+						promise.then(
+							(successVal) => {
+								resolved_array.push(successVal);
+							},
+							(failVal) => {
+								rejected_array.push(failVal);
+							}
+						);
+					}
+					resolve({resolved_array: resolved_array, rejected_array: rejected_array});
+				});
+				intermediate_promise.then(({resolved_array, rejected_array}) => {
+					if (rejected_array.length != 0) {
+						reject(rejected_array[0]);
+					}
+					else {
+						resolve(resolved_array);
+					}
+				});
+			});	
+		};
+		var handler = function(m) {
+			console.log(m);
+		}
+		var result = promise_all(promise_array).then(handler, handler);
+	</script>
+</html>
