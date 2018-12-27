@@ -1,0 +1,36 @@
+<html>
+	<body>
+		<div>
+			<h1>How are you</h1>
+			<h2>I am good</h2>
+		</div>
+		<div>
+			<h1>What's your name</h1>
+			<h2>The name's Bond, James Bond</h2>
+		</div>
+		<script>
+			// given a node, scan all text nodes within it for a specific string
+			var find_string_in_node = function(node, string) {
+				if (node.nodeType == Node.TEXT_NODE) {
+					console.log(node.nodeValue);
+					if (node.nodeValue.indexOf(string) > -1) {
+						return true;
+					}
+					else {
+						return false;
+					}
+				}
+				else if (node.nodeType == Node.ELEMENT_NODE) {
+					let shouldReturn = false;
+					node.childNodes.forEach((item) => {if (find_string_in_node(item, string)){shouldReturn = true;}});
+					if (shouldReturn) {
+						return true;
+					}
+					else {
+						return false;
+					}
+				}
+			}
+			console.log(find_string_in_node(document.body, "James Bond"));
+		</script>
+	</body>
