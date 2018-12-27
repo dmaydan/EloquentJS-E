@@ -1,7 +1,8 @@
 <html>
 	<script>
-		var promise = new Promise((resolve, reject) => {resolve("Hello");})
-		promise.then((resolvedVal) => {console.log(resolvedVal)});
-		console.log("Me first!");
+		var promise_resolve = new Promise((resolve, reject) => {resolve("This is promise 3.");});
+		var promise_reject  = new Promise((resolve, reject) => {reject("This is promise 4.");});
+		console.log(Promise.resolve(promise_reject));
+		promise_reject.catch((val)=>{console.log(val);});
 	</script>
 </html>
