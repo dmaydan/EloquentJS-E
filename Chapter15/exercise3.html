@@ -1,0 +1,45 @@
+<html>
+	<body>
+		<div>
+			<h1 data-tabname="Greeting">How are you</h1>
+			<h2 data-tabname="Response">I am good</h2>
+			<h1 data-tabname="Question">What's your name</h1>
+			<h2 data-tabname="Answer">The name's Bond, James Bond</h2>
+		</div>
+		<script>
+			var div = document.getElementsByTagName("div")[0];
+			var asTabs = function(node){
+				var tabList = [];
+				var childrenArray = Array.from(node.children);
+
+				for (let i = 0; i < childrenArray.length; i++) {
+					let child = childrenArray[i];
+					let tab = document.createElement("button");
+					tab.textContent = child.getAttribute("data-tabname");
+					child.style.visibility = "hidden";
+					if (i == childrenArray.length - 1) {
+						child.style.visibility = "visible";
+						tab.style.background = "red";
+					}
+					tab.addEventListener("click", (event) => {
+						for (let child of childrenArray) {
+							child.style.visibility = "hidden";
+						}
+						child.style.visibility = "visible";
+						for (let tab of tabList) {
+							tab.style.background = "";
+						}
+						tab.style.background = "red"; 
+					});
+					tabList.push(tab);
+				}
+				var outerTabDiv = document.createElement("div");
+				for (let tab of tabList) {
+					outerTabDiv.appendChild(tab);
+				}
+				node.insertBefore(outerTabDiv, node.children[0]);
+			}
+			asTabs(div);
+		</script>
+	</body>
+</html>

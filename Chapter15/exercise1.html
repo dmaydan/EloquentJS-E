@@ -1,0 +1,24 @@
+<html>
+	<div id="balloon" style="font-size: 20px">🎈</div>
+	<script>
+		var balloon = document.getElementById("balloon");
+		var limit = 50;
+		var handler = function(event) {
+			var stringFontSize = balloon.style.fontSize;
+			var numericalFontSize = Number(stringFontSize.slice(0, stringFontSize.length - 2));
+			if (event.key == "ArrowUp") {
+				if (numericalFontSize * 1.1 > limit) {
+					balloon.textContent = "💥";
+					balloon.removeEventListener("keydown", handler);
+				}
+				else {
+					balloon.style.fontSize = numericalFontSize * 1.1 + "px";
+				}
+			}
+			else if (event.key == "ArrowDown") {
+				balloon.style.fontSize = numericalFontSize * .9 + "px";
+			}
+		};
+		window.addEventListener("keydown", handler);
+	</script>
+</html>
