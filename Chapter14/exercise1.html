@@ -1,0 +1,33 @@
+<html>
+	<body>
+		<div id="mountain"></div>
+		<script>
+			var dataset = [{name: "Kilimanjaro", height: 5895, place: "Tanzania"}, {name: "Manaslu", height: 26759, place: "Nepal"}, {name: "Annapurna I", height: 26545, place: "Nepal"}];
+			var table_generator = function(array) {
+				var columns = Object.keys(array[0]);
+				var tableNode = document.createElement("table");
+				var headerNode = document.createElement("tr");
+				for (let column of columns) {
+					let headerColumn = document.createElement("th");
+					let headerTextNode = document.createTextNode(column)
+					headerColumn.appendChild(headerTextNode);
+					headerNode.appendChild(headerColumn);
+				}
+				tableNode.appendChild(headerNode);
+				for (let element of array) {
+					let rowNode = document.createElement("tr");
+					for (let column of columns) {
+						let data = document.createElement("td");
+						let text = document.createTextNode(element[column]);
+						data.appendChild(text);
+						rowNode.appendChild(data);
+					}
+					tableNode.appendChild(rowNode);
+				}
+				var mountainNode = document.getElementById("mountain");
+				mountainNode.appendChild(tableNode);
+			};
+			table_generator(dataset);
+		</script>
+	</body>
+</html>

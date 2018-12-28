@@ -1,0 +1,29 @@
+<html>
+	<body>
+		<h1>How are you</h1>
+		<h2>I am good</h2>
+		<h1>What's your name</h1>
+		<h2>The name's Bond, James Bond</h2>
+		<script>
+			var get_elements_by_tag_name = function(node, tag) {
+				tag = tag.toUpperCase();
+				if (node.nodeName == tag) {
+					let result_array = [node];
+					for (let child of Array.from(node.children)) {
+						result_array.concat(get_elements_by_tag_name(child, tag));
+					}
+					return result_array;
+				}
+				else {
+					var result_array = [];
+					for (let child of Array.from(node.children)) {
+						result_array = result_array.concat(get_elements_by_tag_name(child, tag));
+					}
+					return result_array;
+				}
+			};
+			console.log(get_elements_by_tag_name(document.body, "h1"));
+			
+		</script>
+	</body>
+</html>
