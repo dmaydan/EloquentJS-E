@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<body>
+	<textarea>Write JS in here
+	</textarea>
+	<button>Run</button>
+	<p></p>
+	<script>
+		var button = document.getElementsByTagName("button")[0];
+		var textarea = document.getElementsByTagName("textarea")[0];
+		var para = document.getElementsByTagName("p")[0];
+		button.addEventListener("click", () => {
+			var code = textarea.value;
+			var returnValue = null;
+			var execFunc = Function("", code);
+			try {
+				returnValue = execFunc();
+			}
+			catch(error) {
+				returnValue = error.message;
+			}
+			para.textContent = String(returnValue);
+		});
+	</script>
+</body>
+</html>

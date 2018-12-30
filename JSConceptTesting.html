@@ -1,25 +1,8 @@
-<style>
-	body {
-		margin: 0;
-	}
-</style>
-<canvas></canvas>
 <script>
-	var canvas = document.getElementsByTagName("canvas")[0];
-	canvas.width = window.innerWidth;
-	canvas.height = window.innerHeight;
-	var c = canvas.getContext("2d");
-	var x = 100;
-	
-	c.strokeStyle = "red";
-	
-	function animate() {
-		c.clearRect(0, 0, innerWidth, innerHeight);
-		c.beginPath();
-		c.arc(x, 100, 30, 0, 2 * Math.PI);
-		c.stroke();
-		x += 2
-		requestAnimationFrame(animate);
-	}
-	requestAnimationFrame(animate);
+	var obj = {
+		"left": 21,
+		"right": 30
+	};
+	console.log(obj.left);
+	console.log(obj.right);
 </script>

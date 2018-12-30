@@ -1,0 +1,131 @@
+<html>
+	<body>
+		<script>
+			function clone (src) {
+			    return JSON.parse(JSON.stringify(src));
+			}
+			var stop = false;
+			var frameCount = 0;
+			var fps, fpsInterval, startTime, now, then, elapsed;
+
+			function startAnimating(fps) {
+			    fpsInterval = 1000 / fps;
+			    then = Date.now();
+			    startTime = then;
+			    animate();
+			}
+			var grid = {
+				gridheight: 10,
+				gridwidth: 10,
+				contents: [],
+				initializeContents() {
+					for (let i = 0; i < this.gridheight; i++) {
+						let innerArray = [];
+						for (let j = 0; j < this.gridwidth; j++) {
+							let cell;
+							if (Math.random() < 0.5) {
+								cell = true;
+							}
+							else {
+								cell = false;
+							}
+							innerArray.push(cell);
+						}
+						this.contents.push(innerArray);
+					}
+				},
+				drawContents() {
+					var container = document.createElement("div");
+					document.body.appendChild(container);
+					for (let i = 0; i < this.contents.length; i++) {
+						let div = document.createElement("div");
+						container.appendChild(div);
+						for (let j = 0; j < this.contents[0].length; j++) {
+							let dCell = document.createElement("input");
+							dCell.type = "checkbox";
+							if (this.contents[i][j]) {
+								dCell.checked = true;
+							}
+							dCell.addEventListener("change", () => {
+								if (dCell.checked) {
+									this.contents[i][j] = true;
+								}
+								else {
+									this.contents[i][j] = false;
+								}
+							});
+							div.appendChild(dCell);
+						}
+					}
+				},
+				// |1|2|3|
+				// |4|x|6|
+				// |7|8|9|
+				generate() {
+					var stableContents = clone(this.contents);
+					console.log(stableContents);
+					var prependArray = [];
+					var postpendArray = [];
+					for (let i = 0; i < stableContents.length; i++) {
+						stableContents[i].unshift(false);
+						stableContents[i].push(false);
+					}
+					for (let i = 0; i < stableContents[0].length; i++) {
+						prependArray.push(false);
+						postpendArray.push(false);
+					}
+					stableContents.unshift(prependArray);
+					stableContents.push(postpendArray);
+					for (let i = 1; i < stableContents.length - 1; i++) {
+						for (let j = 1; j < stableContents[0].length - 1; j++) {
+							let surroundingCells = [];
+
+							surroundingCells.push(stableContents[i-1][j-1]);
+							surroundingCells.push(stableContents[i-1][j]);
+							surroundingCells.push(stableContents[i-1][j+1]);
+							surroundingCells.push(stableContents[i][j-1]);
+							surroundingCells.push(stableContents[i][j+1]);
+							surroundingCells.push(stableContents[i+1][j-1]);
+							surroundingCells.push(stableContents[i+1][j]);
+							surroundingCells.push(stableContents[i+1][j+1]);
+							let numberOfLiveSurrounding = 0;
+							for (let element of surroundingCells) {
+								if (element == true) {
+									numberOfLiveSurrounding += 1;
+								}
+							}
+							if (stableContents[i][j]) {
+								if (numberOfLiveSurrounding != 2 && numberOfLiveSurrounding != 3) {
+									this.contents[i-1][j-1] = false;
+								}
+							}
+							else {
+								if (numberOfLiveSurrounding == 3) {
+									this.contents[i-1][j-1] = true;
+								}
+							}
+						}
+					}
+					this.drawContents();
+
+				}
+			}
+			grid.initializeContents();
+			var animate = function () {
+				requestAnimationFrame(animate);
+				now = Date.now();
+    			elapsed = now - then;
+    			if (elapsed > fpsInterval) {
+    				then = now - (elapsed % fpsInterval);
+    				var container = document.getElementsByTagName("div")[0];
+					if (container) {
+						container.remove();
+					}
+					grid.generate();
+				}
+			}
+			startAnimating(3);
+			animate();
+		</script>
+	</body>
+</html>

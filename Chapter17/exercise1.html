@@ -58,10 +58,10 @@
 		// draw spiral
 		context.beginPath();
 		context.moveTo(600, 100);
-		for (i=0; i < 100; i++) {
-		  angle = i;
-		  x=600+(1+angle)*Math.cos(angle); // radius and angle slowly getting bigger
-		  y=100+(1+angle)*Math.sin(angle);
+		for (let i = 0; i < 100; i++) {
+		  let angle = i;
+		  let x=600+(1+angle)*Math.cos(angle); // radius and angle slowly getting bigger
+		  let y=100+(1+angle)*Math.sin(angle);
 		  context.lineTo(x, y);
 		}
 		context.stroke();
