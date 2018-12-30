@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<body>
+	<canvas></canvas>
+	<script>
+		var canvas = document.getElementsByTagName("canvas")[0];
+		canvas.width = window.innerWidth;
+		canvas.height = window.innerHeight;
+		var context = canvas.getContext("2d");
+		context.strokeStyle = "black";
+		// Draw trapezoid
+		context.beginPath();
+		context.moveTo(50, 50);
+		context.lineTo(100, 50);
+		context.lineTo(125, 75);
+		context.lineTo(25, 75);
+		context.lineTo(50, 50);
+		context.stroke();
+		context.closePath();
+		// Draw diamond
+		context.beginPath();
+		context.moveTo(275, 50);
+		context.lineTo(250 + 25 * Math.cos(Math.PI/2), 50 + 25 * Math.sin(Math.PI/2));
+		context.lineTo(250 + 25 * Math.cos(Math.PI), 50 + 25 * Math.sin(Math.PI));
+		context.lineTo(250 + 25 * Math.cos(3*Math.PI/2), 50 + 25 * Math.sin(3*Math.PI/2));
+		context.lineTo(250 + 25 * Math.cos(2*Math.PI), 50 + 25 * Math.sin(2*Math.PI/2));
+		context.stroke();
+		context.closePath();
+		// Draw zig zag lines
+		var x = 10; // # of lines
+		var angle = Math.PI/25;
+		// center is 350, 60
+		context.beginPath();
+		context.moveTo(350, 50);
+		var currentX = 350;
+		var currentY = 50;
+		var direction = true;
+		for (let i = 0; i < x; i++) {
+			if (direction) {
+				let newX = currentX + 75 * Math.cos(angle);
+				let newY = currentY + 75 * Math.sin(angle);
+				context.lineTo(newX, newY);
+				currentX = newX;
+				currentY = newY;
+				direction = false;
+			}
+			else {
+				let newerX = currentX + 75 * Math.cos(Math.PI - angle);
+				let newerY = currentY + 75 * Math.sin(Math.PI - angle);
+				context.lineTo(newerX, newerY);
+				currentX = newerX;
+				currentY = newerY;
+				direction = true;
+			}
+		}
+		context.stroke();
+		context.closePath();
+		// draw spiral
+		context.beginPath();
+		context.moveTo(600, 100);
+		for (i=0; i < 100; i++) {
+		  angle = i;
+		  x=600+(1+angle)*Math.cos(angle); // radius and angle slowly getting bigger
+		  y=100+(1+angle)*Math.sin(angle);
+		  context.lineTo(x, y);
+		}
+		context.stroke();
+		context.closePath();
+		// draw strange shape
+		var angle =  Math.PI/4;
+		context.beginPath();
+		context.moveTo(800, 50); // center
+		for (let i = 0; i < 8; i++) {
+			let currentx = 800 + 30 * Math.cos(i * angle);
+			let currenty = 50 + 30 * Math.sin(i * angle);
+			let movex = 800 + 30 * Math.cos((i+1) * angle);
+			let movey = 50 + 30 * Math.sin((i+1) * angle);
+			context.moveTo(movex, movey);
+			context.quadraticCurveTo(800, 50, currentx, currenty);
+		}
+		context.stroke();
+		context.closePath();
+	</script>
+</body>
+</html>

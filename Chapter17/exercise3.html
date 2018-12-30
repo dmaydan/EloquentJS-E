@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<body>
+	<canvas></canvas>
+	<script>
+		var canvas = document.getElementsByTagName("canvas")[0];
+		canvas.width = window.innerWidth;
+		canvas.height = window.innerHeight;
+		var context = canvas.getContext("2d");
+		var VELOCITYX = 5;
+		var VELOCITYY = 5;
+		const RADIUS = 50;
+		var circleX = 50;
+		var circleY = 50;
+		var drawBall = function() {
+			context.beginPath();
+			context.arc(circleX, circleY, RADIUS, 0, 2 * Math.PI);
+			context.fill();
+		}
+		var updateBall = function() {
+			var potentialCircleX = circleX + VELOCITYX;
+			var potentialCircleY = circleY + VELOCITYY;
+			if (potentialCircleY < RADIUS || potentialCircleY + RADIUS > window.innerHeight) {
+				VELOCITYY *= -1; // when collide with top/bottom reverse y 
+			}
+			if (potentialCircleX < RADIUS || potentialCircleX + RADIUS > window.innerWidth) {
+				VELOCITYX *= -1; // when collide with left/right reverse x
+			}
+			circleX += VELOCITYX;
+			circleY += VELOCITYY;
+			drawBall();
+		}
+		var animate = function() {
+			context.clearRect(0, 0, window.innerWidth, window.innerHeight);
+			updateBall();
+			requestAnimationFrame(animate); // when browser is ready to repaint it will call animate
+		}
+		requestAnimationFrame(animate); // when browser is ready to repaint it will all animate
+	</script>
+</body>
+</html>
