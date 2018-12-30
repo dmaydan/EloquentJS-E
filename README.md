@@ -1,6 +1,5 @@
 # EloquentJS Exercises
-This repository contains my solutions to the exercises in the EloquentJS textbook. Here's a listing of the topics covered in the textbook.
-
+This repository contains my solutions to the exercises in the EloquentJS textbook. The textbook is available for free at https://eloquentjavascript.net.
 ## Interesting Exercises
 Some of the more interesting exercises are: 
 
