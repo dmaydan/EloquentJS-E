@@ -12,3 +12,4 @@ Some of the more interesting exercises are:
 6. [Chapter 14 > Exercise 2 - `document.getElementsByTagName()` Implementation](Chapter14/exercise2.html)
 7. [Chapter 17 > Exercise 1 - Cool Shapes on `<canvas>`](Chapter17/exercise1.html)
 8. [Chapter 17 > Exercise 3 - Bouncing Ball](Chapter17/exercise3.html)
+9. [Chapter 18 > Exercise 3 - Conway's Game of Life](Chapter18/exercise3.html)
